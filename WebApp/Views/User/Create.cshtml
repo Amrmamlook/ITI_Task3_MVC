@@ -1,0 +1,51 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form action="/User/Create" method="post" enctype="multipart/form-data" >
+    <div>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" required/>
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label for="Age">Age</label>
+        <input asp-for="Age" class="form-control" required>
+        <span asp-validation-for="Age"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password"> Password</label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="CPassword"> Confirm Password</label>
+        <input asp-for="CPassword" class="form-control" />
+        <span asp-validation-for="CPassword"></span>
+    </div>
+    <div>
+        <label asp-for="Email"> Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label for="photo">Photo:</label>
+        <input type="file" accept=".jpg, .jpeg, .png" name="photo" />
+
+    </div>
+    <select name="DeparId">
+        @foreach (var item in ViewBag.departData)
+        {
+            <option value="@item.Id">@item.NameDepart</option>
+           
+        }
+    </select>
+
+    <input type="submit" value="Add"  class="form-control">
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</form>

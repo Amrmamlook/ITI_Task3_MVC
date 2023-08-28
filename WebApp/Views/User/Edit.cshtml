@@ -1,0 +1,36 @@
+﻿
+@model User
+<form action="/User/SaveEdit/@Model.Id" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Name</label>
+        <input type="text" name="Name" class="form-control" required value="@Model.Name" />
+    </div>
+
+    <div>
+        <label for="Age">Age</label>
+        <input type="text" name="Age" class="form-control" value="@Model.Age" required>
+    </div>
+
+    <div>
+        <label for="photo">Photo:</label>
+        <input type="file" accept=".jpg, .jpeg, .png" name="photo" value="@Model.Image"  />
+        <span asp-validation-for="Image" class="text-danger">  Size  must be 100KB or Less</span> 
+    </div>
+    <select name="DeparId">
+    <option value="">Select Department</option>
+    @foreach (Department department in ViewBag.departData)
+    {
+        if(Model.DeparId==department.Id)
+        {
+                <option value="@department.Id" selected>@department.NameDepart</option>
+        }
+            else
+            {
+            
+                <option value="@department.Id" >@department.NameDepart </option>
+            }
+        }
+</select>
+
+    <input type="submit" value="Save" class="form-control">
+</form>

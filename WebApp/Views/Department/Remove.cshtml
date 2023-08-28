@@ -1,0 +1,18 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "Remove";
+}
+
+<h4>Are You sure Want Delete</h4>
+
+<div class="card" style="width:340px">
+    <div class="card-body">
+        <h4 class="card-title">@Model.NameDepart</h4>
+        <p class="card-text">@Model.Manager</p>
+        <a href="#" class="btn btn-primary">See Profile</a>
+    </div>
+    <form method="post" action="/Department/ConfirmDelete/@Model.Id">
+        <input type="submit" value="Delete" class="form-control" />
+    </form>
+</div>
+
